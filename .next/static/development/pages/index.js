@@ -4422,6 +4422,18 @@ module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 
 /***/ }),
 
+/***/ "./node_modules/isomorphic-unfetch/browser.js":
+/*!****************************************************!*\
+  !*** ./node_modules/isomorphic-unfetch/browser.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = window.fetch || (window.fetch = __webpack_require__(/*! unfetch */ "./node_modules/unfetch/dist/unfetch.mjs").default || __webpack_require__(/*! unfetch */ "./node_modules/unfetch/dist/unfetch.mjs"));
+
+
+/***/ }),
+
 /***/ "./node_modules/next-server/dist/lib/mitt.js":
 /*!***************************************************!*\
   !*** ./node_modules/next-server/dist/lib/mitt.js ***!
@@ -8874,6 +8886,21 @@ if (hadRuntime) {
 
 /***/ }),
 
+/***/ "./node_modules/unfetch/dist/unfetch.mjs":
+/*!***********************************************!*\
+  !*** ./node_modules/unfetch/dist/unfetch.mjs ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest,o=[],u=[],i={},a=function(){return{ok:2==(s.status/100|0),statusText:s.statusText,status:s.status,url:s.responseURL,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(JSON.parse(s.responseText))},blob:function(){return Promise.resolve(new Blob([s.response]))},clone:a,headers:{keys:function(){return o},entries:function(){return u},get:function(e){return i[e.toLowerCase()]},has:function(e){return e.toLowerCase()in i}}}};for(var l in s.open(n.method||"get",e,!0),s.onload=function(){s.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm,function(e,n,t){o.push(n=n.toLowerCase()),u.push([n,t]),i[n]=i[n]?i[n]+","+t:t}),t(a())},s.onerror=r,s.withCredentials="include"==n.credentials,n.headers)s.setRequestHeader(l,n.headers[l]);s.send(n.body||null)})});
+//# sourceMappingURL=unfetch.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/url/url.js":
 /*!*********************************!*\
   !*** ./node_modules/url/url.js ***!
@@ -9707,10 +9734,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index.css */ "./index.css");
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_facebook_login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-facebook-login */ "./node_modules/react-facebook-login/dist/facebook-login-with-button.js");
-/* harmony import */ var react_facebook_login__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_facebook_login__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_facebook_login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-facebook-login */ "./node_modules/react-facebook-login/dist/facebook-login-with-button.js");
+/* harmony import */ var react_facebook_login__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_facebook_login__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -9719,81 +9748,109 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var responseFacebook = function responseFacebook(response) {
-  console.log(response);
-};
 
-var Post = function Post(props) {
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h1", null, props.name);
-};
+HomePage.getInitialProps =
+/*#__PURE__*/
+function () {
+  var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
+    var req, query, protocol, host, pageRequest, res, json;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            req = _ref.req, query = _ref.query;
+            protocol = req ? "".concat(req.headers['x-forwarded-proto'], ":") : location.protocol;
+            host = req ? req.headers['x-forwarded-host'] : location.host;
+            pageRequest = "".concat(protocol, "//").concat(host, "/api/profiles?page=").concat(query.page || 1, "&limit=").concat(query.limit || 9);
+            _context.next = 6;
+            return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default()(pageRequest);
 
-var Index = function Index(props) {
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_loginLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-    className: "LoginContent"
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("img", {
-    src: "/static/Family.png"
-  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("p", {
-    className: "LoginTitle"
-  }, "SCRAPPBOOK"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", {
-    type: "text",
-    placeholder: "Username",
-    className: "LoginInput"
-  }), " ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", {
-    type: "password",
-    placeholder: "Password",
-    className: "LoginInput"
-  }), " ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
-    type: "button",
-    className: "LoginBtn"
-  }, "Log in"), " ", react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
-    type: "button",
-    className: "LoginBtn"
-  }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-    class: "HorizontalDiv"
-  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_facebook_login__WEBPACK_IMPORTED_MODULE_6___default.a, {
-    appId: "461136824455844",
-    autoLoad: false,
-    fields: "name,email,picture",
-    callback: Post.getInitialProps =
-    /*#__PURE__*/
-    function () {
-      var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(response) {
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                console.log("Fetched name: ".concat(props.name));
-                console.log("Fetched email: ".concat(props.email));
-                return _context.abrupt("return", {
-                  response: response
-                });
+          case 6:
+            res = _context.sent;
+            _context.next = 9;
+            return res.json();
 
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
+          case 9:
+            json = _context.sent;
+            return _context.abrupt("return", json);
 
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }() // callback={responseFacebook}
-    ,
-    cssClass: "FacebookBtn",
-    icon: "fa-facebook"
-  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-    className: "footerDiv"
-  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("img", {
-    src: "/static/CAappsLogoTran.png",
-    className: "footerLogo"
-  })));
-};
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
 
-/* harmony default export */ __webpack_exports__["default"] = (Index); // export default function Blog(){
+  return function (_x) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+function HomePage(_ref3) {
+  var profiles = _ref3.profiles,
+      page = _ref3.page,
+      pageCount = _ref3.pageCount;
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("ul", null, profiles.map(function (p) {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("li", {
+      className: "profile",
+      key: p.id
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      prefetch: true,
+      href: "/profile?id=".concat(p.id)
+    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("img", {
+      src: p.avatar
+    }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", null, p.name))));
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("nav", null, page > 1 && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    prefetch: true,
+    href: "/?page=".concat(page - 1, "&limit=9")
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("a", null, "Previous")), page < pageCount && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    prefetch: true,
+    href: "/?page=".concat(page + 1, "&limit=9")
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("a", {
+    className: "next"
+  }, "Next"))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (HomePage); // const responseFacebook = (response) => {
+//     console.log(response);
+// }
+// const Post = props => (
+//       <h1>{props.name}</h1>
+//   );
+// const Index = props => (
+//     <LoginLayout>
+//         <div className="LoginContent">
+//             <img src="/static/Family.png"/>
+//             <p className="LoginTitle">SCRAPPBOOK</p>
+//             <input type="text" placeholder="Username" className="LoginInput"/> <br/>
+//             <input type="password" placeholder="Password" className="LoginInput"/> <br />
+//             <button type="button" className="LoginBtn">Log in</button> <br/>
+//             <button type="button" className="LoginBtn">Sign Up</button><br/>
+//             <div class="HorizontalDiv"></div>
+//             <FacebookLogin
+//                 appId="461136824455844"
+//                 autoLoad={false}
+//                 fields="name,email,picture"
+//                 callback={Post.getInitialProps = async function(response) {   
+//                     console.log(`Fetched name: ${props.name}`);
+//                     console.log(`Fetched email: ${props.email}`);                     
+//                     return{ response };
+//                   }}
+//                 // callback={responseFacebook}
+//                 cssClass="FacebookBtn"
+//                 icon="fa-facebook"
+//             />
+//         </div>
+//         <div className="footerDiv">
+//             <img src="/static/CAappsLogoTran.png" className="footerLogo"/>
+//         </div>
+//     </LoginLayout>
+// );
+// export default Index;
+// export default function Blog(){
 //     return(
 //         <LoginLayout>
 //             <div className="LoginContent">

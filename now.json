@@ -1,4 +1,21 @@
 {
     "version": 2,
-    "builds": [{"src": "package.json", "use":"@now/next"}]
-}
+    "name": "next-mysql",
+    "alias": "next-mysql.now.sh",
+    "builds": [
+      { "src": "api/**/*.js", "use": "@now/node" },
+      { "src": "next.config.js", "use": "@now/next" }
+    ],
+    "routes": [
+      {
+        "src": "/api/profiles/(?<id>[^/]*)",
+        "dest": "api/profiles/profile.js?id=$id"
+      }
+    ],
+    "env": {
+      "MYSQL_HOST": "db5000049422.hosting-data.io",
+      "MYSQL_USER": "dbu122076",
+      "MYSQL_PASSWORD": "Gooseberry@194",
+      "MYSQL_DATABASE": "dbs44285"
+    }
+  }
