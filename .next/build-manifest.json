@@ -1,27 +1,44 @@
 {
-  "devFiles": [
-    "static/development/dll/dll_599a58a60c43245180de.js"
-  ],
+  "devFiles": [],
   "pages": {
     "/": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/css/styles.0e778549.chunk.css",
+      "static/chunks/styles.d6b3b6ae75b1d675856b.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
     ],
     "/_app": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
+    ],
+    "/about": [
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
     ],
     "/index": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/css/styles.0e778549.chunk.css",
+      "static/chunks/styles.d6b3b6ae75b1d675856b.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
+    ],
+    "/login": [
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
+    ],
+    "/post": [
+      "static/runtime/webpack-8ed9452df514b4d17d80.js",
+      "static/chunks/commons.6653e752803af149d753.js",
+      "static/runtime/main-3daabeb1dde7624c7fe0.js"
     ]
   }
 }
