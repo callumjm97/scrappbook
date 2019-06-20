@@ -2,16 +2,63 @@ import LoginLayout from "../components/loginLayout";
 import React from 'react';
 import "../index.css"
 import FacebookLogin from 'react-facebook-login';
-import Link from 'next/link'
-import 'isomorphic-fetch'
-import {loadFirebase} from '../lib/db';
 
-const responseFacebook = (response) => {
-    console.log(response);
+import {loadFirebase} from '../lib/db.js';
+
+
+
+export default class Index extends React.Component{
+    static async getInitialProps(){
+        let firebase = await loadFirebase();
+        let db = firebase.firestore();
+        let result = await new Promise((resolve, reject) => { db.collection('User_Login').limit(10).get()
+            .then(snapshot => {
+                let data = [];
+                snapshot.forEach(doc => {
+                    data.push(Object.assign({
+                        id: doc.id
+                    }, doc.data()));
+                });
+                resolve(data);
+            })
+            .catch(error => {
+                reject([]);
+            }
+        )});
+
+        return {agencies: result};
+    }
+    render(){
+    return<LoginLayout>
+        <div>hello <hr/>
+            {(this.props.agencies && this.props.agencies.length > 0) ? 
+            <ul>
+            {this.props.agencies.map(agency => <li key="{agency.id}">Name: {agency.First_Name} {agency.Last_Name}</li>)}
+            </ul> : <p><strong>didn't find anything</strong></p>}
+        </div>
+        <FacebookLogin
+            appId="461136824455844"
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={async function(response) { 
+                console.log(response);                     
+                return{facebookResult : response };
+                }}
+            // callback={responseFacebook}
+            cssClass="FacebookBtn"
+            icon="fa-facebook"
+        />
+        <div>
+
+        </div>
+        </LoginLayout>
+    }
 }
 
 
-
+// const responseFacebook = (response) => {
+//     console.log(response);
+// }
 // const Index = props => (
 //     <LoginLayout>
 //         <div className="LoginContent">
@@ -97,30 +144,5 @@ const responseFacebook = (response) => {
 //     });
 //     return result;
 // }
-export default class Index extends React.Component{
-    constructor(){
-        super()
-        this.state = {
-            agencies: [
-                {name: 'Callum Joseph Morgan'}
-            ]
-        }
-    }
 
-    async componentDidMount(){
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const agencies = await response.json();
 
-        this.setState({agencies: agencies});
-    }
-
-    render(){
-        return <div>hello <hr/>
-        {(this.state.agencies && this.state.agencies.length > 0) ? 
-        <ul>
-        {this.state.agencies.map(agency => <li><h3>{agency.title}</h3></li>)}
-        </ul> : <p><strong>didn't find anything</strong></p>}
-        </div>
-        
-    }
-}

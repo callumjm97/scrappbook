@@ -2,9 +2,7 @@ const webpack = require('webpack');
 require('dotenv').config();
 const withCSS = require('@zeit/next-css');
 
-module.exports = withCSS({
-    target: 'serverless',
-    
+module.exports = withCSS({    
     webpack: config => {
         const env = Object.keys(process.env).reduce((acc,curr) => {
             acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
