@@ -36,20 +36,34 @@ export default class Index extends React.Component{
             {this.props.agencies.map(agency => <li key="{agency.id}">Name: {agency.First_Name} {agency.Last_Name}</li>)}
             </ul> : <p><strong>didn't find anything</strong></p>}
         </div>
-        <FacebookLogin
-            appId="461136824455844"
-            autoLoad={false}
-            fields="name,email,picture"
-            callback={async function(response) { 
-                console.log(response);                     
-                return{facebookResult : response };
-                }}
-            // callback={responseFacebook}
-            cssClass="FacebookBtn"
-            icon="fa-facebook"
-        />
-        <div>
+         <div className="LoginContent">
+             <img src="/static/Family.png"/>
+             <p className="LoginTitle">SCRAPPBOOK</p>
+             <input type="text" placeholder="Username" className="LoginInput"/> <br/>
+             <input type="password" placeholder="Password" className="LoginInput"/> <br />
+             <button type="button" className="LoginBtn">Log in</button> <br/>
+             <button type="button" className="LoginBtn">Sign Up</button><br/>
+             <div class="HorizontalDiv"></div>
+             <FacebookLogin
+                appId="461136824455844"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={Index                                                                       .getInitialProps = async function(response) {   
+                   $("#FBName").val(props.name);
+                    console.log(`Fetched name: ${props.name}`);
+                    console.log(`Fetched email: ${props.email}`);                     
+                    return{ response };
+                  }}
+                // callback={responseFacebook}
+                cssClass="FacebookBtn"
+                icon="fa-facebook"
+            />
+            <p id="FBName"></p>
+        </div>
+        
 
+        <div className="footerDiv">
+            <img src="/static/CAappsLogoTran.png" className="footerLogo"/>
         </div>
         </LoginLayout>
     }

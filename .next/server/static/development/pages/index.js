@@ -595,11 +595,33 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("li", {
           key: "{agency.id}"
         }, "Name: ", agency.First_Name, " ", agency.Last_Name);
-      })) : react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("strong", null, "didn't find anything"))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(react_facebook_login__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      })) : react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("strong", null, "didn't find anything"))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        className: "LoginContent"
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("img", {
+        src: "/static/Family.png"
+      }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("p", {
+        className: "LoginTitle"
+      }, "SCRAPPBOOK"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Username",
+        className: "LoginInput"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("input", {
+        type: "password",
+        placeholder: "Password",
+        className: "LoginInput"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("button", {
+        type: "button",
+        className: "LoginBtn"
+      }, "Log in"), " ", react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("button", {
+        type: "button",
+        className: "LoginBtn"
+      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        class: "HorizontalDiv"
+      }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(react_facebook_login__WEBPACK_IMPORTED_MODULE_12___default.a, {
         appId: "461136824455844",
         autoLoad: false,
         fields: "name,email,picture",
-        callback:
+        callback: Index.getInitialProps =
         /*#__PURE__*/
         function () {
           var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
@@ -609,12 +631,14 @@ function (_React$Component) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    console.log(response);
+                    $("#FBName").val(props.name);
+                    console.log("Fetched name: ".concat(props.name));
+                    console.log("Fetched email: ".concat(props.email));
                     return _context.abrupt("return", {
-                      facebookResult: response
+                      response: response
                     });
 
-                  case 2:
+                  case 4:
                   case "end":
                     return _context.stop();
                 }
@@ -629,7 +653,14 @@ function (_React$Component) {
         ,
         cssClass: "FacebookBtn",
         icon: "fa-facebook"
-      }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", null));
+      }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("p", {
+        id: "FBName"
+      })), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        className: "footerDiv"
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("img", {
+        src: "/static/CAappsLogoTran.png",
+        className: "footerLogo"
+      })));
     }
   }], [{
     key: "getInitialProps",
