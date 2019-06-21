@@ -3,7 +3,7 @@
     "name": "scrappbook",
     "alias": "scrappbook.caapps.now.sh",
     "builds": [{ "src": "*.js", "use": "@now/node" },
-      { "src": "next.config.js", "use": "@now/next" }
+      { "src": "*.js", "use": "@now/next" }
     ],
     "routes": [
       {
